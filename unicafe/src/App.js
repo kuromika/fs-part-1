@@ -16,6 +16,10 @@ const Feedback = ({increaseGood, increaseNeutral, increaseBad}) => {
   )
 }
 
+const StatisticLine = ({ text, value }) => {
+  return <p>{text} {value}</p>
+}
+
 const Statistics = ({ good, neutral, bad }) => {
 
   const all = good + neutral + bad;
@@ -26,12 +30,12 @@ const Statistics = ({ good, neutral, bad }) => {
       <h1>Statistics</h1>
       {all > 0 ?
         <>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average { (good - bad) / all}</p>
-        <p>positive {(good / all) * 100}%</p>
+      <StatisticLine text='good' value={good}></StatisticLine>
+      <StatisticLine text='neutral' value={neutral}></StatisticLine>
+      <StatisticLine text='bad' value={bad}></StatisticLine>
+      <StatisticLine text='all' value={all}></StatisticLine>
+      <StatisticLine text='average' value={(good - bad) / all}></StatisticLine>
+      <StatisticLine text='positive' value={ (good / all) * 100}></StatisticLine>
         </> : <p>No feedback given</p>
       }
     </div>
