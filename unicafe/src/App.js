@@ -20,15 +20,20 @@ const Statistics = ({ good, neutral, bad }) => {
 
   const all = good + neutral + bad;
 
+
   return (
     <div>
       <h1>Statistics</h1>
+      {all > 0 ?
+        <>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
       <p>all {all}</p>
-      <p>average {good > 0 || bad > 0 ? (good - bad) / all : 0}</p>
-      <p>positive {all > 0 ? (good / all) * 100 : 0}%</p>
+      <p>average { (good - bad) / all}</p>
+        <p>positive {(good / all) * 100}%</p>
+        </> : <p>No feedback given</p>
+      }
     </div>
   )
 }
